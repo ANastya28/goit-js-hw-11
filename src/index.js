@@ -3,8 +3,6 @@ import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import axios from "axios";
 
-
-// const BASE_URL = 'https://pixabay.com/api/'
 const API_KEY = '38260386-cb0ba1fc5da3483268325876c';
 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
@@ -35,7 +33,6 @@ function onBtnLoadMoreClick() {
   pageToFetch += 1;
   getImages(queryToFetch, pageToFetch);
 }
-
 
 let queryToFetch = '';
 let pageToFetch;
