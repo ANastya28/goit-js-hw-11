@@ -103,7 +103,7 @@ const getImages = async (query, pageToFetch) => {
         'Sorry, there are no images matching your search query. Please try again.'
       );
       return;
-      }
+    }
       
     renderImages(data);
 
