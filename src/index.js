@@ -18,7 +18,7 @@ buttonLoadMore.classList.replace('load-more', 'is-hidden');
 
 let queryToFetch = '';
 let pageToFetch;
-const pageLimit = 20;
+const pageLimit = 40;
 
 const fetchImages = async (queryToFetch, pageToFetch) => {
   const { data } = await axios({
@@ -81,6 +81,8 @@ const getImages = async (query, pageToFetch) => {
     const data = await fetchImages(query, pageToFetch);
     
     if (!data.hits.length) {
+      buttonLoadMore.classList.replace('load-more', 'is-hidden');
+
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
@@ -100,10 +102,13 @@ const getImages = async (query, pageToFetch) => {
     }
 
     if (data.totalHits <= pageToFetch * pageLimit) {
+      buttonLoadMore.classList.replace('load-more', 'is-hidden');
+
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results"
       );
     }
+
   } catch (error) {
     console.log(error);
     Notiflix.Notify.failure('Oops! Something went wrong!');
