@@ -16,24 +16,6 @@ buttonLoadMore.addEventListener('click', onBtnLoadMoreClick);
 
 buttonLoadMore.classList.replace('load-more', 'is-hidden');
 
-function onSubmitForm(event) {
-  event.preventDefault();
-  const query = event.currentTarget.elements.searchQuery.value;
-  if (!query.trim() || query === queryToFetch) {
-    return;
-  }
-  queryToFetch = query;
-  galleryEl.innerHTML = '';
-  pageToFetch = 1;
-  getImages(queryToFetch, pageToFetch);
-  formEl.reset();
-}
-
-function onBtnLoadMoreClick() {
-  pageToFetch += 1;
-  getImages(queryToFetch, pageToFetch);
-}
-
 let queryToFetch = '';
 let pageToFetch;
 const pageLimit = 20;
@@ -127,3 +109,21 @@ const getImages = async (query, pageToFetch) => {
     Notiflix.Notify.failure('Oops! Something went wrong!');
   }
 };
+
+function onSubmitForm(event) {
+  event.preventDefault();
+  const query = event.currentTarget.elements.searchQuery.value;
+  if (!query.trim() || query === queryToFetch) {
+    return;
+  }
+  queryToFetch = query;
+  galleryEl.innerHTML = '';
+  pageToFetch = 1;
+  getImages(queryToFetch, pageToFetch);
+  formEl.reset();
+}
+
+function onBtnLoadMoreClick() {
+  pageToFetch += 1;
+  getImages(queryToFetch, pageToFetch);
+}
